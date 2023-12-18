@@ -6,21 +6,17 @@
     body {
       text-align: center;
     }
-
     h1 {
       margin-top: 30px;
     }
-
     .container {
       display: flex;
       justify-content: center;
       align-items: center;
     }
-
     .container > div {
       margin: 20px;
     }
-
     #drop-area {
       border: 2px dashed #ccc;
       border-radius: 5px;
@@ -30,7 +26,6 @@
       align-items: center;
       justify-content: center;
     }
-
     #profile-preview {
       width: 200px;
       height: 200px;
@@ -38,7 +33,6 @@
       object-fit: cover;
       margin-top: 30px;
     }
-
     canvas {
       display: none;
     }
@@ -49,11 +43,10 @@
   <div class="container">
     <div>
       <select id="text-select">
-        <option value="">Select Text</option>
-        <option value="Sanskriti Strong">Sanskriti Strong</option>
+	<option value="Sanskriti Strong">Sanskriti Strong</option>
         <option value="Sanskriti Smart">Sanskriti Smart</option>
         <option value="Sanskriti Spice">Sanskriti Spice</option>
-        <option value="Sanskriti Proud">Sanskriti Proud</option>
+        <option value="Sanskriti Proud">Sanskriti Spice</option>
         <option value="Sanskriti Learn">Sanskriti Learn</option>
         <option value="Lifelong Learner">Lifelong Learner</option>
         <option value="Growth Enthusiast">Growth Enthusiast</option>
@@ -84,11 +77,9 @@
     const textSelect = document.getElementById('text-select');
     let imgData = null;
 
-    // Initialize canvas size to 1920x1080
     canvas.width = 400;
     canvas.height = 400;
 
-    // Handle file drop
     dropArea.addEventListener('dragenter', handleDragEnter, false);
     dropArea.addEventListener('dragover', handleDragOver, false);
     dropArea.addEventListener('dragleave', handleDragLeave, false);
@@ -144,18 +135,16 @@
       a.click();
     }
 
+    function applyVignetteEffect() {
+      const outerRadius = Math.max(canvas.width, canvas.height) / 2;
+      const innerRadius = outerRadius / 2;
+      const gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, innerRadius, canvas.width / 2, canvas.height / 2, outerRadius);
+      gradient.addColorStop(0, 'rgba(0,0,0,0)');
+      gradient.addColorStop(1, 'rgba(0,0,0,0.5)');
 
-	
-function applyVignetteEffect() {
-    const outerRadius = Math.max(canvas.width, canvas.height) / 2;
-    const innerRadius = outerRadius / 2;
-    const gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, innerRadius, canvas.width / 2, canvas.height / 2, outerRadius);
-    gradient.addColorStop(0, 'rgba(0,0,0,0)');
-    gradient.addColorStop(1, 'rgba(0,0,0,0.5)');
-
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
 
     function generateProfilePicture(img) {
       const text = textSelect.value;
@@ -164,15 +153,13 @@ function applyVignetteEffect() {
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
       if (text) {
-        // Draw text banner
-        const fontSize = 48; // Adjusted font size for larger canvas
-        const font = `bold ${fontSize}px Century Gothic`;
+        const fontSize = 36;
         ctx.font = `bold ${fontSize}px Century Gothic`;
-	const textWidth = ctx.measureText(text).width;
-	const bannerWidth = textWidth + 500; // You may need to adjust the padding
-      	const bannerHeight = 120; // Adjusted for larger canvas
+        const textWidth = ctx.measureText(text).width;
+        const bannerWidth = textWidth + 250;
+        const bannerHeight = 120;
         const bannerX = (canvas.width / 2) - (bannerWidth / 2);
-        const bannerY = canvas.height - bannerHeight - 40 - 40; // Adjusted for larger canvas
+        const bannerY = canvas.height - bannerHeight - 40;
 
         const gradient = ctx.createLinearGradient(bannerX, bannerY, bannerX + bannerWidth, bannerY);
         gradient.addColorStop(0, '#F13985');
@@ -191,6 +178,8 @@ function applyVignetteEffect() {
         ctx.textAlign = 'center';
         ctx.fillText(text, canvas.width / 2, bannerY + bannerHeight / 2 + 1);
       }
+
+      applyVignetteEffect();
 
       downloadBtn.disabled = false;
     }
