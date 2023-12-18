@@ -50,20 +50,19 @@
     <div>
       <select id="text-select">
         <option value="">Select Text</option>
+        <option value="Sanskriti Strong">Sanskriti Strong</option>
+        <option value="Sanskriti Smart">Sanskriti Smart</option>
+        <option value="Sanskriti Spice">Sanskriti Spice</option>
+        <option value="Sanskriti Proud">Sanskriti Proud</option>
+        <option value="Sanskriti Learn">Sanskriti Learn</option>
         <option value="Lifelong Learner">Lifelong Learner</option>
-        <option value="Knowledge Seeker">Knowledge Seeker</option>
         <option value="Growth Enthusiast">Growth Enthusiast</option>
-        <option value="Collaborative Spirit">Collaborative Spirit</option>
-        <option value="Continuous Learner">Continuous Learner</option>
-        <option value="Curiosity Catalyst">Curiosity Catalyst</option>
         <option value="Knowledge Sharer">Knowledge Sharer</option>
-        <option value="Reflective Practitioner">Reflective Practitioner</option>
-        <option value="Adaptive Learner">Adaptive Learner</option>
-        <option value="Empowered Learner">Empowered Learner</option>
-        <option value="Team Learning Catalyst">Team Learning Catalyst</option>
-        <option value="Team Learning Fanatic">Team Learning Fanatic</option>
-        <option value="Experimentation Nut">Experimentation Nut</option>
-        <option value="Collaborative Learner">Collaborative Learner</option>
+        <option value="Learning Loco">Learning Loco</option>
+        <option value="Nuts for Knowledge">Nuts for Knowledge</option>
+        <option value="Change Champ">Change Champ</option>
+        <option value="Feedback Fan">Feedback Fan</option>
+        <option value="Feedback Welcome!">Feedback Welcome!</option>
       </select>
     </div>
     <div>
@@ -170,7 +169,7 @@ function applyVignetteEffect() {
         const font = `bold ${fontSize}px Century Gothic`;
         ctx.font = `bold ${fontSize}px Century Gothic`;
 	const textWidth = ctx.measureText(text).width;
-	const bannerWidth = textWidth + 80; // You may need to adjust the padding
+	const bannerWidth = textWidth + 500; // You may need to adjust the padding
       	const bannerHeight = 120; // Adjusted for larger canvas
         const bannerX = (canvas.width / 2) - (bannerWidth / 2);
         const bannerY = canvas.height - bannerHeight - 40 - 40; // Adjusted for larger canvas
