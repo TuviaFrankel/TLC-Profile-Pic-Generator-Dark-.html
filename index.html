@@ -153,13 +153,13 @@
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
       if (text) {
-        const fontSize = 36;
+        const fontSize = 32;
         ctx.font = `bold ${fontSize}px Century Gothic`;
         const textWidth = ctx.measureText(text).width;
-        const bannerWidth = textWidth + 250;
-        const bannerHeight = 120;
+        const bannerWidth = textWidth + 500;
+        const bannerHeight = 50;
         const bannerX = (canvas.width / 2) - (bannerWidth / 2);
-        const bannerY = canvas.height - bannerHeight - 40;
+        const bannerY = canvas.height - bannerHeight - 30;
 
         const gradient = ctx.createLinearGradient(bannerX, bannerY, bannerX + bannerWidth, bannerY);
         gradient.addColorStop(0, '#F13985');
